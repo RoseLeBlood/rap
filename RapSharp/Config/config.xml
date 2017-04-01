@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<SoundSystemConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                   xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Channel>Stereo</Channel>
+  <Format>PCMFLOAT_96000</Format>
+  <Output>WASAPI</Output>
+  <SoundCard>0</SoundCard>
+</SoundSystemConfig>

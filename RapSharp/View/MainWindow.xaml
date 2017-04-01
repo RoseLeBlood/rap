@@ -1,0 +1,147 @@
+﻿<!--abgewandelte MIT-Licens 
+NON-COMMERCIAL LICENSE
+Ramona Audio Player Copyright (c)  2013 Philipp Schröck <philsch@hotmail.de>
+
+1.0  Hiermit wird unentgeltlich, jeder Person, die eine Kopie der Software und der zugehörigen 
+Dokumentationen (die \"Software\") erhält, die Erlaubnis erteilt, sie uneingeschränkt zu benutzen, 
+inklusive und ohne Ausnahme,  dem Recht, sie zu verwenden, kopieren, ändern und/oder verbreiten und Personen, 
+die diese Software erhalten, diese Rechte zu geben, unter den folgenden Bedingungen:
+
+Der obige Urheberrechtsvermerk, dieser Erlaubnisvermerk und der Quellcode sind in allen Kopien oder Teilkopien 
+der Software beizulegen.
+
+2.0 Die Kommerzielle Nutzung dieser Software oder Teile aus der Software ist ausdrücklich verboten.
+
+3.0 DIE SOFTWARE WIRD OHNE JEDE AUSDRÜCKLICHE ODER IMPLIZIERTE GARANTIE BEREITGESTELLT, EINSCHLIESSLICH DER 
+GARANTIE ZUR BENUTZUNG FÜR DEN VORGESEHENEN ODER EINEM BESTIMMTEN ZWECK SOWIE  
+JEGLICHER RECHTSVERLETZUNG, JEDOCH NICHT DARAUF BESCHRÄNKT. IN KEINEM FALL SIND DIE AUTOREN ODER 
+COPYRIGHTINHABER FÜR JEGLICHEN SCHADEN ODER SONSTIGE ANSPRÜCHE HAFTBAR ZU MACHEN, OB INFOLGE DER 
+ERFÜLLUNG EINES VERTRAGES, EINES DELIKTES ODER ANDERS IM ZUSAMMENHANG MIT DER SOFTWARE ODER SONSTIGER 
+VERWENDUNG DER SOFTWARE ENTSTANDEN.-->
+    <Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:logic="clr-namespace:RapSharp.logic" xmlns:local="clr-namespace:RapSharp" x:Class="RapSharp.MainWindow" x:Name="frmMain"
+        Title="Ramona Audio Player Sharp -Heinberg-" MinHeight="480" Height="600" MinWidth="800" Width="900" Foreground="#FFF7F7F7" 
+        Loaded="frmMain_Loaded" Closed="frmMain_Closed" Icon="../Resources/media_playback_start.png" Closing="frmMain_Closing" 
+        >
+    <Window.Background>
+        <LinearGradientBrush x:Name="windowBackground" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+            <GradientStop Color="#FF573A3A" Offset="0.2"/>
+            <GradientStop Color="Gray" Offset="0.5"/>
+            <GradientStop Color="#FF573A3A" Offset="1"/> 
+
+        </LinearGradientBrush>
+    </Window.Background>
+
+    <Grid Background="{StaticResource GlassFX}" x:Name="gridMain">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26"/>
+            <RowDefinition />
+            <RowDefinition Height="58" />
+            <RowDefinition Height="26"/>
+        </Grid.RowDefinitions>
+        <!-- Middle "TabControl" -->
+        <Grid Grid.Row="1" x:Name="gridPlaylistVisual" Margin="10,2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="295"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <!-- 3DView -->
+            <local:cnPosition Visibility="Hidden" Grid.Column="1" x:Name="listenerPosition" Margin="2,0,0,0" />
+            <!-- Visual -->
+            <local:cnVisual x:Name="visual" Visibility="Visible" Grid.Column="1" Margin="2,0,0,0"/>
+            <!-- Playlist -->
+            <ListBox Visibility="Visible"  AllowDrop="True" Background="{StaticResource BaseColor}"
+				    Drop="lstPlaylist_Drop"   x:Name="lstPlaylist" ScrollViewer.VerticalScrollBarVisibility="Visible"
+                         ScrollViewer.HorizontalScrollBarVisibility="Hidden" MouseDoubleClick="lstPlaylist_MouseDoubleClick" Margin="0,0,2,0"   />
+
+        </Grid>
+        <Menu Background="{x:Null}" x:Name="menuMain" IsMainMenu="True"  >
+            <MenuItem Header="_Media" IsEnabled="True" x:Name="menuMedia" Foreground="White" >
+                <MenuItem Header="_Open File" IsEnabled="True" x:Name="menuOpenFile" Foreground="Black" Click="menuOpenFile_Click" >
+                    <MenuItem.Icon>
+                        <Image Source="../Resources/Menu/openfile.ico" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Open _Networkstream" IsEnabled="True" x:Name="menuOpenStream" Foreground="Black" Click="menuOpenStream_Click" >
+                    <MenuItem.Icon>
+                        <Image Source="../Resources/Menu/network_server.ico" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Open _Directory" IsEnabled="True" x:Name="menuOpenDir" Foreground="Black" Click="menuOpenDir_Click" >
+                    <MenuItem.Icon>
+                        <Image Source="../Resources/Menu/folder_open.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator x:Name="menuMediaSeperator" />
+                <MenuItem Header="Exit" IsEnabled="True" x:Name="menuExit" Foreground="Black" Click="menuExit_Click">
+                    <MenuItem.Icon>
+                        <Image Source="../Resources/window_close.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Control" IsEnabled="True" x:Name="menuPlayback" Foreground="White" >
+                <MenuItem Header="Play" IsEnabled="True" x:Name="menuPlay" Foreground="Black" Click="cmdPlay_Click">
+                    <MenuItem.Icon>
+                        <Image Source="../Resources/Menu/menu_playback_start.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator x:Name="menuControllSeperatorWiderholen" />
+                <MenuItem Header="Repeat" IsEnabled="True" Foreground="Black" x:Name="menuRepeat" >
+                    <MenuItem Header="Title" IsEnabled="True" IsCheckable="True" x:Name="menuRepeatTitle" Click="menuRepeatTitle_Click" />
+                    <MenuItem Header="All" IsEnabled="True" IsCheckable="True" x:Name="menuRepeatAll" Click="menuRepeatAll_Click" />
+                </MenuItem>
+                <Separator x:Name="menuControllSeperatorCon"/>
+                <MenuItem Header="Load Playlist" IsEnabled="True" x:Name="menuLoadPlaylist" Foreground="Black" Click="menuLoadPlaylis_Click" />
+                <MenuItem Header="Save Playlist" IsEnabled="True" x:Name="meneSavePlaylist" Foreground="Black" Click="meneSavePlaylist_Click" />
+                <Separator x:Name="menuControllSeperatorPlaylist" />
+                <MenuItem Header="Clear Playlist" IsEnabled="True" x:Name="menuClearPlaylist" Foreground="Black" Click="menuClearPlaylist_Click" />
+            </MenuItem>
+            <MenuItem Header="View" IsEnabled="True" x:Name="menuAnzeige" Foreground="White" >
+                <MenuItem Header="Visualation" IsEnabled="True" x:Name="menuVisual" Foreground="Black"
+                          Click="menuVisual_Click" IsCheckable="True" IsChecked="True" />
+                <MenuItem Header="3D Position" IsEnabled="True" x:Name="menu3DPosition" Foreground="Black"
+                          Click="cmd3DView_Click" IsCheckable="True" />
+            </MenuItem>
+            <MenuItem Header="Sound System" IsEnabled="True" x:Name="menuOutput" Foreground="White" >
+                <MenuItem Header="Config" IsEnabled="True" x:Name="menuConfig" Foreground="Black" Click="menuConfig_Click" />
+                <Separator />
+            </MenuItem>
+            <MenuItem Header="?" IsEnabled="True" x:Name="menuFragezeichen" Foreground="White" >
+                <MenuItem Header="Info" x:Name="menuInfo" Foreground="Black" Click="menuInfo_Click" >
+                    <MenuItem.Icon>
+                        <Image Source="../Resources/Menu/info.ico" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+        <Button Margin="10,5,0,0" Grid.Row="2" VerticalAlignment="Top" Height="43" HorizontalAlignment="Left" Width="58" x:Name="cmdPlay"
+			Click="cmdPlay_Click" >
+            <Image Source="../Resources/media_playback_start.png" />
+        </Button>
+        <Button  Margin="68,24,0,0" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="30" Height="24" x:Name="cmdPause" 
+			Click="cmdPause_Click" IsEnabled="False">
+            <Image Source="../Resources/media_playback_pause.png" />
+        </Button>
+        <Button Margin="98,24,0,0" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="32" Height="24" x:Name="cmdStop"
+			Click="cmdStop_Click" IsEnabled="False" >
+            <Image Source="../Resources/media_playback_stop.png" />
+        </Button>
+        <Button Margin="160,24,0,0" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="30" Height="24" x:Name="cmdNext"
+			Click="cmdNext_Click" IsEnabled="False" >
+            <Image Source="../Resources/media_skip_forward.png" />
+        </Button>
+        <Button  Margin="130,24,0,0" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="30" Height="24" x:Name="cmdBack"
+			Click="cmdBack_Click" IsEnabled="False" >
+            <Image Source="../Resources/media_skip_backward.png" />
+        </Button>
+        <Slider Margin="78,0,10,32" Grid.Row="2" VerticalAlignment="Bottom" Height="21" x:Name="sliderUpdate" ValueChanged="sliderUpdate_ValueChanged" PreviewMouseUp="sliderUpdate_MouseUp" IsMoveToPointEnabled="True"/>
+        <StatusBar Grid.Row="4" Background="{x:Null}" >
+            <StatusBarItem Content="Stopped" Foreground="White" FontSize="8" x:Name="sitemStatus"/>
+            <StatusBarItem Content="00:00:00 / 00:00:00" Foreground="White" Background="{x:Null}" FontSize="8" FlowDirection="RightToLeft" x:Name="sitemTime"/>
+        </StatusBar>
+
+
+    </Grid>
+</Window>

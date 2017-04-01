@@ -1,0 +1,83 @@
+﻿<!--abgewandelte MIT-Licens 
+NON-COMMERCIAL LICENSE
+Ramona Audio Player Copyright (c)  2013 Philipp Schröck <philsch@hotmail.de>
+
+1.0  Hiermit wird unentgeltlich, jeder Person, die eine Kopie der Software und der zugehörigen 
+Dokumentationen (die \"Software\") erhält, die Erlaubnis erteilt, sie uneingeschränkt zu benutzen, 
+inklusive und ohne Ausnahme,  dem Recht, sie zu verwenden, kopieren, ändern und/oder verbreiten und Personen, 
+die diese Software erhalten, diese Rechte zu geben, unter den folgenden Bedingungen:
+
+Der obige Urheberrechtsvermerk, dieser Erlaubnisvermerk und der Quellcode sind in allen Kopien oder Teilkopien 
+der Software beizulegen.
+
+2.0 Die Kommerzielle Nutzung dieser Software oder Teile aus der Software ist ausdrücklich verboten.
+
+3.0 DIE SOFTWARE WIRD OHNE JEDE AUSDRÜCKLICHE ODER IMPLIZIERTE GARANTIE BEREITGESTELLT, EINSCHLIESSLICH DER 
+GARANTIE ZUR BENUTZUNG FÜR DEN VORGESEHENEN ODER EINEM BESTIMMTEN ZWECK SOWIE  
+JEGLICHER RECHTSVERLETZUNG, JEDOCH NICHT DARAUF BESCHRÄNKT. IN KEINEM FALL SIND DIE AUTOREN ODER 
+COPYRIGHTINHABER FÜR JEGLICHEN SCHADEN ODER SONSTIGE ANSPRÜCHE HAFTBAR ZU MACHEN, OB INFOLGE DER 
+ERFÜLLUNG EINES VERTRAGES, EINES DELIKTES ODER ANDERS IM ZUSAMMENHANG MIT DER SOFTWARE ODER SONSTIGER 
+VERWENDUNG DER SOFTWARE ENTSTANDEN.-->
+    <Window x:Class="RapSharp.frmInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Heinberg" Height="480" Width="461" WindowStyle="None" ResizeMode="NoResize">
+    <Grid Background="#FF573A3A" x:Name="gridMain">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="51"/>
+            <ColumnDefinition Width="410"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="23"/>
+            <RowDefinition Height="63"/>
+            <RowDefinition Height="327"/>
+            <RowDefinition Height="67"/>
+        </Grid.RowDefinitions>
+        <Rectangle x:Name="rectMove" Stroke="#FFA29B9B" Fill="#FFD8D5D5" Grid.RowSpan="3" 
+                   MouseDown="Grid_MouseDown" Grid.ColumnSpan="2" />
+
+        <TextBox Margin="12" Grid.Row="2"  TextWrapping="Wrap"  x:Name="txtBlock" VerticalScrollBarVisibility="Auto" 
+                 ScrollViewer.CanContentScroll="True" Background="{x:Null}" 
+                 IsReadOnly="True" IsTabStop="False" AllowDrop="False" Grid.ColumnSpan="2"/>
+
+        <Label x:Name="lblTitle" IsHitTestVisible="False" Content="Ramona Audio Player Sharp -Heinberg-  " Margin="0,0,10,0" 
+               Grid.Row="1" VerticalAlignment="Top" FontSize="20" Height="37" Grid.Column="1">
+        </Label>
+
+        <Label x:Name="lblCopyright" IsHitTestVisible="False" Content="Copyright by Philipp Schröck 2013 - Version " 
+               Margin="0,37,12,0" Grid.Row="1" FontSize="10" Grid.Column="1">
+        </Label>
+
+        <Button x:Name="cmdClose"  Margin="368,0,0,3" Click="cmdClose_Click" 
+                IsDefault="True" Height="20" VerticalAlignment="Bottom" Grid.Column="1">
+            <Image Source="../Resources/window_close.png" Height="20" />
+        </Button>
+
+        <Label x:Name="lblMail" Content="Mail:" HorizontalAlignment="Left" VerticalAlignment="Top" 
+               Margin="12,10,0,0" Grid.Row="3" Width="75" Foreground="#FFA09D9D" 
+               FontSize="10" Height="23" Grid.ColumnSpan="2">
+        </Label>
+
+        <Label x:Name="lblIconsInfo" Content="Icons:" HorizontalAlignment="Left" Margin="12,34,0,0" 
+               Grid.Row="3" VerticalAlignment="Top" Width="75" Foreground="#FFA09D9D" 
+               FontSize="10" Height="23" Grid.ColumnSpan="2">
+        </Label>
+
+        <Label x:Name="lblMailInfo" Content="philsch@hotmail.de" Margin="0,10,12,0" Grid.Row="3" VerticalAlignment="Top"
+               Foreground="#FFA09D9D" FontSize="10" Height="23" Grid.Column="1">
+        </Label>
+
+        <Label x:Name="lblIcons" Content="schollidesign (http://schollidesign.deviantart.com/) GNU/GPL" 
+               Margin="0,34,12,0" Grid.Row="3" VerticalAlignment="Top" Foreground="#FFA09D9D" 
+               FontSize="10" Height="23" Grid.Column="1">
+        </Label>
+
+
+        <Border x:Name="brUnder" BorderBrush="#FFA29B9B" BorderThickness="1" HorizontalAlignment="Left" Grid.Row="3" Width="461" Grid.ColumnSpan="2"/>
+
+        <Button x:Name="cmdWebseite" Grid.Row="1" Margin="10,10,9,10" Click="cmdWebseite_Click" >
+            <Image Source="../Resources/media_playback_start.png" />
+        </Button>
+
+    </Grid>
+</Window>

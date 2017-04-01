@@ -1,0 +1,95 @@
+﻿<!--abgewandelte MIT-Licens 
+NON-COMMERCIAL LICENSE
+Ramona Audio Player Copyright (c)  2013 Philipp Schröck <philsch@hotmail.de>
+
+1.0  Hiermit wird unentgeltlich, jeder Person, die eine Kopie der Software und der zugehörigen 
+Dokumentationen (die \"Software\") erhält, die Erlaubnis erteilt, sie uneingeschränkt zu benutzen, 
+inklusive und ohne Ausnahme,  dem Recht, sie zu verwenden, kopieren, ändern und/oder verbreiten und Personen, 
+die diese Software erhalten, diese Rechte zu geben, unter den folgenden Bedingungen:
+
+Der obige Urheberrechtsvermerk, dieser Erlaubnisvermerk und der Quellcode sind in allen Kopien oder Teilkopien 
+der Software beizulegen.
+
+2.0 Die Kommerzielle Nutzung dieser Software oder Teile aus der Software ist ausdrücklich verboten.
+
+3.0 DIE SOFTWARE WIRD OHNE JEDE AUSDRÜCKLICHE ODER IMPLIZIERTE GARANTIE BEREITGESTELLT, EINSCHLIESSLICH DER 
+GARANTIE ZUR BENUTZUNG FÜR DEN VORGESEHENEN ODER EINEM BESTIMMTEN ZWECK SOWIE  
+JEGLICHER RECHTSVERLETZUNG, JEDOCH NICHT DARAUF BESCHRÄNKT. IN KEINEM FALL SIND DIE AUTOREN ODER 
+COPYRIGHTINHABER FÜR JEGLICHEN SCHADEN ODER SONSTIGE ANSPRÜCHE HAFTBAR ZU MACHEN, OB INFOLGE DER 
+ERFÜLLUNG EINES VERTRAGES, EINES DELIKTES ODER ANDERS IM ZUSAMMENHANG MIT DER SOFTWARE ODER SONSTIGER 
+VERWENDUNG DER SOFTWARE ENTSTANDEN.-->
+    <Window x:Class="RapSharp.View.frmConfig"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="frmConfig" Height="291" Width="500" WindowStyle="None" ResizeMode="NoResize">
+    <Grid Background="#FF573A3A" x:Name="gridMain" MouseDown="gridMain_MouseDown" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="24"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="27"/>
+            <RowDefinition/>
+            <RowDefinition Height="67"/>
+        </Grid.RowDefinitions>
+
+        <Rectangle x:Name="rectMove" Stroke="#FFA29B9B" Fill="#FFD8D5D5"
+                    Grid.RowSpan="2" Grid.ColumnSpan="2" />
+        <Button x:Name="cmdClose"  VerticalAlignment="Center" 
+                HorizontalContentAlignment="Center" Click="cmdClose_Click" IsCancel="True"
+                IsDefault="True" Height="20" Grid.Column="1" Margin="0,4,0,3">
+            <Image Source="../Resources/window_close.png" Height="20" />
+        </Button>
+        <Label IsHitTestVisible="False" Margin="5,0" x:Name="lblTitle" Content="Ramona Audio Player Config" FontStyle="Italic" />
+
+        <Border x:Name="brUnder" BorderBrush="#FFA29B9B" BorderThickness="1" Grid.Row="2" Grid.ColumnSpan="2">
+            <Grid x:Name="gridBottom" Grid.Row="2" Grid.ColumnSpan="2">
+                <Button x:Name="cmdOK" Foreground="White" Content="OK" Margin="0,0,10,10" HorizontalAlignment="Right" 
+                        Width="75" Height="18" VerticalAlignment="Bottom"  Click="cmdOK_Click" IsDefault="True" />
+                <Button x:Name="cmdCancel" Content="Cancel" Foreground="White" Margin="333,37,90,10"
+                        Click="cmdCancel_Click" IsCancel="True" />
+
+            </Grid>
+        </Border>
+        <Grid x:Name="gridMiddle" Margin="5" Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="139"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="lblChannel" Content="Channel:" Margin="10" VerticalAlignment="Top"/>
+            <Label x:Name="lblFormat" Content="Format:" Margin="10,41,10,10" VerticalAlignment="Top"/>
+            <Label x:Name="lblOutput" Content="Driver:" Margin="10,72,10,10" VerticalAlignment="Top"/>
+            <Label x:Name="lblSoundcard" Content="Soundcard" Margin="10,98,10,10" VerticalAlignment="Top"/>
+            <ComboBox  x:Name="cobChannel" Grid.Column="1" 
+                      Margin="10,14,10,10" VerticalAlignment="Top" SelectionChanged="cobChannel_SelectionChanged" >
+                <Label Content="Mono" />
+                <Label Content="Stereo" />
+                <Label Content="Quad" />
+                <Label Content="5.1" />
+                <Label Content="7.1" />
+            </ComboBox>
+            <ComboBox  x:Name="cobSamplerate" Grid.Column="1" Margin="10,41,211,0" VerticalAlignment="Top" SelectionChanged="cobSamplerate_SelectionChanged" >
+                <Label Content="44100" />
+                <Label Content="48000" />
+                <Label Content="96000" />
+                <Label Content="192000" />
+            </ComboBox>
+            <ComboBox   x:Name="cobBit" Grid.Column="1" HorizontalAlignment="Left" Margin="211,41,0,0" VerticalAlignment="Top" Width="130" SelectionChanged="cobBit_SelectionChanged">
+                <Label Content="16" />
+                <Label Content="24" />
+                <Label Content="32" />
+                <Label Content="Float" />
+            </ComboBox>
+            <ComboBox  x:Name="cobOutput" Grid.Column="1" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" Width="331" SelectionChanged="cobOutput_SelectionChanged">
+                <Label Content="WASAPI" />
+                <Label Content="ASIO" />
+            </ComboBox> 
+            <ComboBox  x:Name="cobSoundcard" Grid.Column="1" HorizontalAlignment="Left" Margin="10,102,0,0" VerticalAlignment="Top" Width="331" SelectionChanged="cobSoundcard_SelectionChanged">
+                <Label Content="Default"  />
+                
+            </ComboBox>
+
+
+        </Grid>
+    </Grid>
+</Window>

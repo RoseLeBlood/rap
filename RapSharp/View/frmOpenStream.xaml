@@ -1,0 +1,51 @@
+﻿<!--abgewandelte MIT-Licens 
+NON-COMMERCIAL LICENSE
+Ramona Audio Player Copyright (c)  2013 Philipp Schröck <philsch@hotmail.de>
+
+1.0  Hiermit wird unentgeltlich, jeder Person, die eine Kopie der Software und der zugehörigen 
+Dokumentationen (die \"Software\") erhält, die Erlaubnis erteilt, sie uneingeschränkt zu benutzen, 
+inklusive und ohne Ausnahme,  dem Recht, sie zu verwenden, kopieren, ändern und/oder verbreiten und Personen, 
+die diese Software erhalten, diese Rechte zu geben, unter den folgenden Bedingungen:
+
+Der obige Urheberrechtsvermerk, dieser Erlaubnisvermerk und der Quellcode sind in allen Kopien oder Teilkopien 
+der Software beizulegen.
+
+2.0 Die Kommerzielle Nutzung dieser Software oder Teile aus der Software ist ausdrücklich verboten.
+
+3.0 DIE SOFTWARE WIRD OHNE JEDE AUSDRÜCKLICHE ODER IMPLIZIERTE GARANTIE BEREITGESTELLT, EINSCHLIESSLICH DER 
+GARANTIE ZUR BENUTZUNG FÜR DEN VORGESEHENEN ODER EINEM BESTIMMTEN ZWECK SOWIE  
+JEGLICHER RECHTSVERLETZUNG, JEDOCH NICHT DARAUF BESCHRÄNKT. IN KEINEM FALL SIND DIE AUTOREN ODER 
+COPYRIGHTINHABER FÜR JEGLICHEN SCHADEN ODER SONSTIGE ANSPRÜCHE HAFTBAR ZU MACHEN, OB INFOLGE DER 
+ERFÜLLUNG EINES VERTRAGES, EINES DELIKTES ODER ANDERS IM ZUSAMMENHANG MIT DER SOFTWARE ODER SONSTIGER 
+VERWENDUNG DER SOFTWARE ENTSTANDEN.-->
+    <Window x:Class="RapSharp.frmOpenStream"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="frmOpenStream" Height="151" Width="441" WindowStyle="None" ResizeMode="NoResize">
+
+    <Grid Background="#FF573A3A" x:Name="gridMain">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+        <Rectangle x:Name="rectMainMove" Stroke="#FFA29B9B" Fill="#FFD8D5D5" Grid.RowSpan="2"
+                   MouseDown="Rectangle_MouseDown" />
+        
+        <Button Content="OK" Margin="356,10,10,7" Grid.Row="2" x:Name="cmdOK" Click="cmdOK_Click" 
+                Foreground="White"/>
+        
+        <Button Margin="415,0,0,0" x:Name="cmdAbbrechen" Click="cmdAbbrechen_Click" Foreground="White" >
+            <Image Source="../Resources/window_close.png" Height="20" Width="20" />
+        </Button>
+
+        <Label x:Name="lblOpenStreamTitle" Content="Open network stream" Margin="10,0" 
+               IsHitTestVisible="False" FontStyle="Italic" />
+        <Label x:Name="lblStreamInfo" Content="Stream: " Margin="10,29,377,36" Grid.Row="1" />
+
+        <TextBox x:Name="txtadress" Text="http://" Margin="69,32,10,36" Grid.Row="1"  BorderBrush="#FFA29B9B" />
+        <Border x:Name="brMain" BorderBrush="#FFA29B9B" BorderThickness="1" Grid.Row="2"/>
+
+
+    </Grid>
+</Window>
